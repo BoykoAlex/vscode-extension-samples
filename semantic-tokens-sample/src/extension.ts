@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { JavaSemanticTokensProvider } from './java-semantic-tokens';
 
 const tokenTypes = new Map<string, number>();
 const tokenModifiers = new Map<string, number>();
@@ -22,6 +23,7 @@ const legend = (function() {
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: 'semanticLanguage' }, new DocumentSemanticTokensProvider(), legend));
+	context.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: "java" }, new JavaSemanticTokensProvider(), legend));
 }
 
 interface IParsedToken {
