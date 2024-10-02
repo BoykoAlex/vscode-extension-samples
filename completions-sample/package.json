@@ -19,7 +19,31 @@
 		"*"
 	],
 	"main": "./out/extension.js",
-	"scripts": {
+	"contributes": {
+		"languages": [
+		  {
+			"id": "sample-properties-yaml",
+			"aliases": [
+			  "Sample Properties Yaml"
+			],
+			"filenamePatterns": [
+			  "sample*.yml",
+			  "sample*.yaml",
+			  "sample*.yml",
+			  "sample*.yaml"
+			],
+			"configuration": "./yaml-support/language-configuration.json"
+		  }
+		],
+		"grammars": [
+			{
+			  "language": "sample-properties-yaml",
+			  "scopeName": "source.sample-properties-yaml",
+			  "path": "./yaml-support/sample-properties-yaml.tmLanguage.json"
+			}
+		]
+	},
+    "scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",

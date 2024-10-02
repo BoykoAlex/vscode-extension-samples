@@ -1,0 +1,10 @@
+{
+  "name": "Sample Properties YAML",
+  "scopeName": "source.sample-properties-yaml",
+  "patterns": [
+    {
+      "comment": "source.yaml is defined in vscode core",
+      "include": "source.yaml"
+    }
+  ]
+}

@@ -70,5 +70,28 @@ export function activate(context: vscode.ExtensionContext) {
 		'.' // triggered whenever a '.' is being typed
 	);
 
-	context.subscriptions.push(provider1, provider2);
+	const triggerChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.{'.split('');
+	const provider3 = vscode.languages.registerCompletionItemProvider(
+		'sample-properties-yaml',
+		{
+			provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+
+				return [
+					new vscode.CompletionItem('spring-log', vscode.CompletionItemKind.Method),
+					new vscode.CompletionItem('spring-warn', vscode.CompletionItemKind.Method),
+					new vscode.CompletionItem('spring-error', vscode.CompletionItemKind.Method),
+					new vscode.CompletionItem('yaml-log', vscode.CompletionItemKind.Method),
+					new vscode.CompletionItem('yaml-warn', vscode.CompletionItemKind.Method),
+					new vscode.CompletionItem('yaml-error', vscode.CompletionItemKind.Method),
+					new vscode.CompletionItem('management', vscode.CompletionItemKind.Method),
+					new vscode.CompletionItem('debug-log', vscode.CompletionItemKind.Method),
+					new vscode.CompletionItem('debug-warn', vscode.CompletionItemKind.Method),
+					new vscode.CompletionItem('debug-error', vscode.CompletionItemKind.Method),
+			];
+			}
+		},
+		...triggerChars
+	)
+
+	context.subscriptions.push(provider1, provider2, provider3);
 }
